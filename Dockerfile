@@ -1,11 +1,12 @@
-# Use a base image with a minimal Linux distribution, for example, Debian
-FROM debian:bullseye-slim
+# Use an Arch Linux base image
+FROM archlinux:base
 
-# Install dependencies and Neovim
-RUN apt-get update && apt-get install -y \
-  neovim \
-  git \
-  curl \
-  && rm -rf /var/lib/apt/lists/* \
-  && git clone https://github.com/lodeme/lazyconfig.nvim.git ~/.config/nvim
+# Update the system and install dependencies
+RUN pacman -Syu --noconfirm && \
+  pacman -S --noconfirm neovim git curl && \
+  pacman -Scc --noconfirm
+
+# Clone the Neovim configuration
+RUN mkdir -p /root/.config/nvim && \
+  git clone https://github.com/lodeme/lazyconfig.nvim.git /root/.config/nvim
 

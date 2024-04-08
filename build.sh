@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker build -t nvim-container .
+docker build --platform linux/amd64 -t nvim-container .
