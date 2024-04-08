@@ -6,8 +6,6 @@ RUN apt-get update && apt-get install -y \
   neovim \
   git \
   curl \
-  && rm -rf /var/lib/apt/lists/*
-
-# Set the working directory in the container
-WORKDIR /workspace
+  && rm -rf /var/lib/apt/lists/* \
+  && git clone https://github.com/lodeme/lazyconfig.nvim.git ~/.config/nvim
 
