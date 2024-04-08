@@ -19,6 +19,7 @@ RUN pacman -Syu --noconfirm && \
   fish \
   zoxide \
   fzf \
+  tree \
   && pacman -Scc --noconfirm
 
 RUN luarocks install jsregexp
