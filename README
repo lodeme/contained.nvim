@@ -1,0 +1,7 @@
+1. Clone project
+2. Build container
+docker build -t nvim-container .
+
+3. Run with terminal and home access
+docker run -it -v $HOME:/workspace/maison nvim-container /bin/bash
+
