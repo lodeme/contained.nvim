@@ -15,7 +15,6 @@ RUN apt-get update \
   luarocks \
   btop \
   ripgrep \
-  lazygit \
   fd-find \
   unzip \
   build-essential \
@@ -25,7 +24,6 @@ RUN apt-get update \
   fzf \
   tree \
   neofetch \
-  tree-sitter \
   xclip \
   nodejs \
   npm \
@@ -35,6 +33,12 @@ RUN apt-get update \
 
 # In Ubuntu, fd is called fd-find, you may need to symlink it:
 # RUN ln -s $(which fdfind) /usr/local/bin/fd
+
+# install lazygit
+RUN LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*') && \
+  curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz" && \
+  tar xf lazygit.tar.gz lazygit && \
+  install lazygit /usr/local/bin
 
 # install jsregexp
 RUN luarocks install jsregexp
