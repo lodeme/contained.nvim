@@ -20,10 +20,12 @@ RUN pacman -Syu --noconfirm && \
   zoxide \
   fzf \
   tree \
+  neofetch \
   && pacman -Scc --noconfirm
 
 RUN luarocks install jsregexp
 # Clone the Neovim configuration
 RUN mkdir -p /root/.config/nvim && \
   git clone https://github.com/lodeme/lazyconfig.nvim.git /root/.config/nvim
+RUN neofetch
 
