@@ -35,5 +35,9 @@ RUN ln -sf /usr/share/zoneinfo/Europe/Berlin /etc/localtime && \
   echo "Europe/Berlin" > /etc/timezone
 
 # get machine information at startup
-RUN echo "neofetch" >> ~/.config/fish/config.fish
-
+RUN mkdir -p /root/.config/fish && \
+  echo "neofetch" >> /root/.config/fish/config.fish && \
+  echo "alias v nvim" >> /root/.config/fish/config.fish && \
+  echo "zoxide init fish | source" >> /root/.config/fish/config.fish && \
+  echo "function z; zoxide query \$argv; end" >> ~/.config/fish/config.fish && \
+  echo "function zi; zoxide query -i \$argv; end" >> ~/.config/fish/config.fish
