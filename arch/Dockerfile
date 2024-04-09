@@ -10,6 +10,7 @@ RUN pacman -Syu --noconfirm && \
   wget \
   luarocks \
   btop \
+  tree \
   ripgrep \
   lazygit \
   fd \
