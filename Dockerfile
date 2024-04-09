@@ -21,6 +21,11 @@ RUN pacman -Syu --noconfirm && \
   fzf \
   tree \
   neofetch \
+  tree-sitter \
+  xclip \
+  nodejs \
+  npm \
+  openssh \
   && pacman -Scc --noconfirm
 
 # install jsregexp
