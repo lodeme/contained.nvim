@@ -23,9 +23,17 @@ RUN pacman -Syu --noconfirm && \
   neofetch \
   && pacman -Scc --noconfirm
 
+# install jsregexp
 RUN luarocks install jsregexp
+
 # Clone the Neovim configuration
 RUN mkdir -p /root/.config/nvim && \
   git clone https://github.com/lodeme/lazyconfig.nvim.git /root/.config/nvim
-RUN neofetch
+
+# Set the timezone
+RUN ln -sf /usr/share/zoneinfo/Europe/Berlin /etc/localtime && \
+  echo "Europe/Berlin" > /etc/timezone
+
+# get machine information at startup
+RUN echo "neofetch" >> ~/.config/fish/config.fish
 
