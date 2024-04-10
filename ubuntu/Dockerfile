@@ -56,6 +56,7 @@ RUN ln -sf /usr/share/zoneinfo/Europe/Berlin /etc/localtime && \
 RUN mkdir -p /root/.config/fish && \
   echo "neofetch" >> /root/.config/fish/config.fish && \
   echo "alias v='nvim'" >> /root/.config/fish/config.fish && \
+  echo "alias lg='lazyygit'" >> /root/.config/fish/config.fish && \
   echo "zoxide init fish | source" >> /root/.config/fish/config.fish && \
   echo "function z; cd $(zoxide query \$argv); end" >> /root/.config/fish/config.fish && \
   echo "function zi; cd $(zoxide query -i \$argv); end" >> /root/.config/fish/config.fish
