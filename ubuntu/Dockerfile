@@ -27,6 +27,7 @@ RUN apt-get update \
   xclip \
   nodejs \
   npm \
+  libsqlite3-dev \
   openssh-client \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
@@ -56,6 +57,6 @@ RUN mkdir -p /root/.config/fish && \
   echo "neofetch" >> /root/.config/fish/config.fish && \
   echo "alias v='nvim'" >> /root/.config/fish/config.fish && \
   echo "zoxide init fish | source" >> /root/.config/fish/config.fish && \
-  echo "function z; zoxide query \$argv; end" >> /root/.config/fish/config.fish && \
-  echo "function zi; zoxide query -i \$argv; end" >> /root/.config/fish/config.fish
+  echo "function z; cd $(zoxide query \$argv); end" >> /root/.config/fish/config.fish && \
+  echo "function zi; cd $(zoxide query -i \$argv); end" >> /root/.config/fish/config.fish
 
