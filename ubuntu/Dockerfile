@@ -29,11 +29,13 @@ RUN apt-get update \
   npm \
   libsqlite3-dev \
   openssh-client \
+  llvm \
+  clangd \
+  cargo \
+  cmake \
+  bear \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
-
-# In Ubuntu, fd is called fd-find, you may need to symlink it:
-# RUN ln -s $(which fdfind) /usr/local/bin/fd
 
 # install lazygit
 RUN LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*') && \
