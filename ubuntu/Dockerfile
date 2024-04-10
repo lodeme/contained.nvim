@@ -61,5 +61,7 @@ RUN mkdir -p /root/.config/fish && \
   echo "alias lg='lazyygit'" >> /root/.config/fish/config.fish && \
   echo "zoxide init fish | source" >> /root/.config/fish/config.fish && \
   echo "function z; cd $(zoxide query \$argv); end" >> /root/.config/fish/config.fish && \
-  echo "function zi; cd $(zoxide query -i \$argv); end" >> /root/.config/fish/config.fish
+  echo "function zi; cd $(zoxide query -i \$argv); end" >> /root/.config/fish/config.fish && \
+  echo "set -gx LANG en_US.UTF-8" >> /root/.config/fish/config.fish && \
+  echo "set -gx LC_ALL en_US.UTF-8" >> /root/.config/fish/config.fish
 
