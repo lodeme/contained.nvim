@@ -56,4 +56,4 @@ RUN ln -sf /usr/share/zoneinfo/Europe/Berlin /etc/localtime && \
 
 # get machine information at startup and set up fish shell configurations
 RUN mkdir -p /root/.config/fish
-COPY config.fish /roof/.config/fish
+COPY config.fish /root/.config/fish
