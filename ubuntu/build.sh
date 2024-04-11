@@ -6,4 +6,4 @@ IMAGE_NAME="nvim-container"
 docker rm -f ${IMAGE_NAME} || true
 
 # Build the image
-docker build --no-cache -t ${IMAGE_NAME} .
+docker build -t ${IMAGE_NAME} .

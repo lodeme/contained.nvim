@@ -1,6 +1,6 @@
 neofetch
 alias v='nvim'
-alias lg='lazyygit'
+alias lg='lazygit'
 zoxide init fish | source
 function z; cd $(zoxide query $argv); end
 function zi; cd $(zoxide query -i $argv); end
