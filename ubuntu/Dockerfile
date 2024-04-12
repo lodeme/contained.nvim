@@ -34,6 +34,7 @@ RUN apt-get update \
   cargo \
   cmake \
   bear \
+  bat \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 

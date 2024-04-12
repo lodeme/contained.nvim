@@ -5,6 +5,7 @@ neofetch
 alias v='nvim'
 alias lg='lazygit'
 alias gs='git fetch && git status'
+alias bat='batcat'
 
 # Setup zoxide aliases
 zoxide init fish | source
