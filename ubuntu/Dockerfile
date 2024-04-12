@@ -56,5 +56,10 @@ RUN ln -sf /usr/share/zoneinfo/Europe/Berlin /etc/localtime && \
   echo "Europe/Berlin" > /etc/timezone
 
 # get machine information at startup and set up fish shell configurations
-RUN mkdir -p /root/.config/fish
-COPY config.fish /root/.config/fish
+ARG PATH_FISH_CFG=/root/.config/fish
+ARG PATH_DOTSCRIPTS=/root/.config/dotscripts
+COPY ../dotfiles/config.fish $PATH_FISH_CFG
+COPY ../dotfiles/custom_prompt.sh $PATH_DOTSCRIPTS
+RUN mkdir -p $PATH_FISH_CFG && \
+    mkdir -p $PATH_DOTSCRIPTS && \
+    sh ${PATH_DOTSCRIPTS}/custom_prompt.sh
