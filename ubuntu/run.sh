@@ -9,5 +9,5 @@ if docker ps -a --format '{{.Names}}' | grep -q "^${CONTAINER_NAME}$"; then
 	docker start -ai "${CONTAINER_NAME}"
 else
 	echo "Container does not exist. Creating and starting ${CONTAINER_NAME}..."
-	docker run -it --name "${CONTAINER_NAME}" -v $HOME:/home nvim-container fish
+	docker run --cap-add=SYS_PTRACE --security-opt seccomp=unconfined -it --name "${CONTAINER_NAME}" -v $HOME:/home nvim-container fish
 fi
