@@ -4,8 +4,10 @@ neofetch
 # Set aliases for shortcuts
 alias v='nvim'
 alias lg='lazygit'
-alias gs='git fetch && git status'
+alias gfs='git fetch && git status'
+alias gs='git status'
 alias bat='batcat'
+alias fzd='cd $(fd --type directory | fzf)'
 
 # Setup zoxide aliases
 zoxide init fish | source
