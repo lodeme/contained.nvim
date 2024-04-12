@@ -7,6 +7,7 @@ alias lg='lazygit'
 alias gfs='git fetch && git status'
 alias gs='git status'
 alias bat='batcat'
+alias fd='fdfind'
 alias fzd='cd $(fd --type directory | fzf)'
 
 # Setup zoxide aliases
