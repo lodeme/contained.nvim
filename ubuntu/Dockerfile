@@ -52,7 +52,10 @@ RUN mkdir -p /root/.config/nvim && \
   git clone https://github.com/lodeme/lazyconfig.nvim.git /root/.config/nvim
 
 # Set the timezone
-RUN ln -sf /usr/share/zoneinfo/Europe/Berlin /etc/localtime && \
+RUN apt-get update && \
+  apt-get install -y locales && \
+  locale-gen en_US.UTF-8 && \
+  ln -sf /usr/share/zoneinfo/Europe/Berlin /etc/localtime && \
   echo "Europe/Berlin" > /etc/timezone
 
 # get machine information at startup and set up fish shell configurations
