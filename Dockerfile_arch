@@ -1,0 +1,48 @@
+# Use an Arch Linux base image
+FROM archlinux:latest
+
+# Update system and install packages
+RUN pacman -Syu --noconfirm && \
+    pacman -S --noconfirm \
+    neovim \
+    zoxide \
+    git \
+    wget \
+    lua \
+    luarocks \
+    lldb \
+    make \
+    btop \
+    ripgrep \
+    fd \
+    unzip \
+    fish \
+    fzf \
+    tree \
+    neofetch \
+    nodejs \
+    npm \
+    openssh \
+    bear \
+    lazygit \
+    zellij \
+    bat \
+    ncdu \
+    python \
+    python-pip \
+    tealdeer \
+    python-pipx && \
+    pipx install norminette && \
+    ln -s /usr/share/zoneinfo/Europe/Berlin /etc/localtime && \
+    luarocks install jsregexp && \
+    rm -rf /root/.config/fish/ && \
+    rm -rf /root/.config/nvim/ && \
+    chsh -s /usr/bin/fish
+
+# Clean up cache to reduce image size
+RUN pacman -Scc --noconfirm
+
+# Get machine information at startup and set up fish shell configurations
+COPY dotfiles/fish /root/.config/fish
+COPY dotfiles/nvim /root/.config/nvim
+

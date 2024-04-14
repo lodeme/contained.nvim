@@ -1,41 +1,42 @@
-# Use an Alpine base image
-FROM alpine:latest
+# Use an Ubuntu base image
+FROM ubuntu:devel
 
-# Avoid caches to minimize the image size
-RUN apk --no-cache add \
+# Avoid prompts from apt
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Update the system and install dependencies
+RUN apt-get update \
+  && apt-get upgrade -y && \
+  apt-get install -y \
   neovim \
-  zoxide \
   git \
   curl \
   wget \
-  lua-dev \
-  luarocks5.1 \
-  build-base \
+  luarocks \
   btop \
   ripgrep \
-  fd \
+  fd-find \
   unzip \
+  build-essential \
   cmake \
   fish \
+  zoxide \
   fzf \
   tree \
-  shadow \
   neofetch \
   nodejs \
   npm \
-  sqlite-dev \
-  openssh \
-  gcompat \
-  clang-extra-tools \
-  llvm14 \
-  clang17 \
+  libsqlite3-dev \
+  openssh-client \
+  llvm \
+  clangd \
+  cargo \
+  cmake \
   bear \
-  lazygit \
-  zellij \
   bat \
-  ncdu \
-  python3 \
-  py3-pip \
+  tldr \
+  tmux \
+  python3-dev \
   pipx \
   tzdata && \
   pipx install norminette && \
@@ -44,8 +45,14 @@ RUN apk --no-cache add \
   luarocks-5.1 install jsregexp && \
   rm -rf /root/.config/fish/ && \
   rm -rf /root/.config/nvim/ && \
-  chsh -s /bin/fish
+  chsh -s /bin/fish && \
+  snap install zellij --classic && \
+  apt-get clean && \
+  rm -rf /var/lib/apt/lists/*
 
-# Get machine information at startup and set up fish shell configurations
-COPY dotfiles/fish /root/.config/fish
-COPY dotfiles/nvim /root/.config/nvim
+# install lazygit
+RUN LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*') && \
+  curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz" && \
+  tar xf lazygit.tar.gz lazygit && \
+  install lazygit /usr/local/bin
+
