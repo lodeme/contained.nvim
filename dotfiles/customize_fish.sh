@@ -1,5 +1,5 @@
 # Remove existing config that would clash with tide
-rm $HOME/.config/fish/functions/fish_prompt.fish
+rm /root/config/fish/functions/fish_prompt.fish
 
 # Install fisher pckage manager and tide prompt configuration
 curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher

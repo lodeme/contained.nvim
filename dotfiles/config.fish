@@ -1,12 +1,13 @@
 # Get system information at startup
-neofetch
+if status is-interactive
+	neofetch
+end
 
 # Set aliases for shortcuts
 alias v='nvim'
 alias lg='lazygit'
 alias gfs='git fetch && git status'
 alias gs='git status'
-alias bat='batcat'
 alias fd='fdfind'
 alias fzd='cd $(fd --type directory | fzf)'
 
