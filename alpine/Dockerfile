@@ -8,7 +8,8 @@ RUN apk --no-cache add \
   git \
   curl \
   wget \
-  luarocks \
+  lua-dev \
+  build-base \
   btop \
   ripgrep \
   fd \
@@ -22,35 +23,23 @@ RUN apk --no-cache add \
   npm \
   sqlite-dev \
   openssh \
-  llvm \
-  clang \
-  cmake \
+  llvm14 \
+  clang17 \
   bear \
+  tldr \
   lazygit \
   zellij \
-  bat
-
-# Install jsregexp
-# RUN luarocks install jsregexp
-
-# Clone the Neovim configuration
-# RUN mkdir -p /root/.config/nvim && \
-#   git clone https://github.com/lodeme/lazyconfig.nvim.git /root/.config/nvim
-#
-# # Set the timezone and locale
-# RUN apk add --no-cache tzdata && \
-#   ln -sf /usr/share/zoneinfo/Europe/Berlin /etc/localtime && \
-#   echo "Europe/Berlin" > /etc/timezone && \
-#   apk add --no-cache libc6-compat && \
-#   echo "en_US.UTF-8 UTF-8" > /etc/locale.gen && \
-#   locale-gen
+  bat \
+  ncdu \
+  tzdata && \
+  ln -s /usr/share/zoneinfo/Europe/Berlin /etc/localtime && \
+  npm install -g tldr && \
+  luarocks-5.1 install jsregexp && \
+  rm -rf /root/.config/fish/ && \
+  rm -rf /root/.config/nvim/ && \
+  chsh /bin/fish
 
 # Get machine information at startup and set up fish shell configurations
-# ARG PATH_FISH_CFG=/root/.config/fish
-# ARG PATH_DOTSCRIPTS=/root/.config/dotscripts
-# COPY ../dotfiles/config.fish $PATH_FISH_CFG
-# COPY ../dotfiles/custom_prompt.sh $PATH_DOTSCRIPTS
-# RUN mkdir -p $PATH_FISH_CFG && \
-#     mkdir -p $PATH_DOTSCRIPTS && \
-#     sh ${PATH_DOTSCRIPTS}/custom_prompt.sh
-#
+COPY ../dotfiles/fish /root/.config/
+COPY ../dotfiles/nvim/ /root/.config/
+RUN source /root/.config/fish/config.fish
