@@ -9,6 +9,7 @@ RUN apk --no-cache add \
   curl \
   wget \
   lua-dev \
+  luarocks5.1 \
   build-base \
   btop \
   ripgrep \
@@ -18,28 +19,33 @@ RUN apk --no-cache add \
   fish \
   fzf \
   tree \
+  shadow \
   neofetch \
   nodejs \
   npm \
   sqlite-dev \
   openssh \
+  gcompat \
+  clang-extra-tools \
   llvm14 \
   clang17 \
   bear \
-  tldr \
   lazygit \
   zellij \
   bat \
   ncdu \
+  python3 \
+  py3-pip \
+  pipx \
   tzdata && \
+  pipx install norminette && \
   ln -s /usr/share/zoneinfo/Europe/Berlin /etc/localtime && \
   npm install -g tldr && \
   luarocks-5.1 install jsregexp && \
   rm -rf /root/.config/fish/ && \
   rm -rf /root/.config/nvim/ && \
-  chsh /bin/fish
+  chsh -s /bin/fish
 
 # Get machine information at startup and set up fish shell configurations
-COPY ../dotfiles/fish /root/.config/
-COPY ../dotfiles/nvim/ /root/.config/
-RUN source /root/.config/fish/config.fish
+COPY dotfiles/fish /root/.config/fish
+COPY dotfiles/nvim /root/.config/nvim

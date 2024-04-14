@@ -19,3 +19,6 @@ function zi; cd $(zoxide query -i $argv); end
 # Set locale
 set -gx LANG en_US.UTF-8
 set -gx LC_ALL en_US.UTF-8
+
+# Update path for pipx binaries
+set -Ux fish_user_paths $fish_user_paths /root/.local/bin
