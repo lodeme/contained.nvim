@@ -7,7 +7,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 # Update the system and install dependencies
 RUN apt-get update \
   && apt-get upgrade -y && \
-  apt-get install -y \
+  apt-get install --no-install-recommends -y \
   neovim \
   git \
   curl \
