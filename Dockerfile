@@ -55,3 +55,5 @@ RUN LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygi
   tar xf lazygit.tar.gz lazygit && \
   install lazygit /usr/local/bin
 
+# setup ssh symlink
+RUN    ln -s /home/lodemetz/.ssh /root
