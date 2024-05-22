@@ -3,6 +3,7 @@ FROM ubuntu:devel
 
 # Avoid prompts from apt
 ENV DEBIAN_FRONTEND=noninteractive
+ENV HOME=/home/lodemetz
 
 # Update the system and install dependencies
 RUN apt-get update \
@@ -40,13 +41,11 @@ RUN apt-get update \
   pipx \
   tzdata && \
   pipx install norminette && \
-  ln -s /usr/share/zoneinfo/Europe/Berlin /etc/localtime && \
   npm install -g tldr && \
   luarocks-5.1 install jsregexp && \
   rm -rf /root/.config/fish/ && \
   rm -rf /root/.config/nvim/ && \
   chsh -s /bin/fish && \
-  snap install zellij --classic && \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/*
 

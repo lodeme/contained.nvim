@@ -9,5 +9,5 @@ if docker ps -a --format '{{.Names}}' | grep -q "^${CONTAINER_NAME}$"; then
 	docker start -ai "${CONTAINER_NAME}"
 else
 	echo "Container does not exist. Creating and starting ${CONTAINER_NAME}..."
-	docker run --cap-add=SYS_PTRACE -it --name "${CONTAINER_NAME}" -v $HOME:/home nvim-ubuntu fish
+	docker run --cap-add=SYS_PTRACE -it --name "${CONTAINER_NAME}" -v $HOME:/home/lodemetz nvim-ubuntu fish
 fi
