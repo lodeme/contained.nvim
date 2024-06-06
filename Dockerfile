@@ -31,6 +31,7 @@ RUN apt-get update \
   openssh-client \
   llvm \
   clangd \
+  valgrind \
   cargo \
   cmake \
   bear \
